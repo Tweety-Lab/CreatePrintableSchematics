@@ -16,6 +16,6 @@ public class SchematicPlacePacketMixin {
 
     @Redirect(method = "lambda$handle$2", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;isCreative()Z"))
     private boolean allowPlaceableItemOrCreative(ServerPlayer player) {
-        return !player.isCreative() || (stack.getTag() != null && stack.getTag().getBoolean("Printable"));
+        return player.isCreative() || (stack.getTag() != null && stack.getTag().getBoolean("Printable"));
     }
 }
