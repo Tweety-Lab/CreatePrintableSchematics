@@ -22,17 +22,13 @@ public class ToolTypeMixin {
         List<ToolType> mutableTools = new ArrayList<>(originalTools);
 
         if (!mutableTools.contains(ToolType.PRINT)) {
-            LocalPlayer player = Minecraft.getInstance().player;
+            ItemStack activeSchematicItem = CreateClient.SCHEMATIC_HANDLER.getActiveSchematicItem();
 
-            if (player != null) {
-                ItemStack activeSchematicItem = CreateClient.SCHEMATIC_HANDLER.getActiveSchematicItem();
+            if (activeSchematicItem != null
+                    && activeSchematicItem.getTag() != null
+                    && activeSchematicItem.getTag().getBoolean("Printable")) {
 
-                if (activeSchematicItem != null
-                        && activeSchematicItem.getTag() != null
-                        && activeSchematicItem.getTag().getBoolean("Printable")) {
-
-                    mutableTools.add(ToolType.PRINT);
-                }
+                mutableTools.add(ToolType.PRINT);
             }
         }
 
