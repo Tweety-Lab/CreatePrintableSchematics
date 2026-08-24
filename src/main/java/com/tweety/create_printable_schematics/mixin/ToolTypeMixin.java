@@ -13,10 +13,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mixin(value = ToolType.class, remap = false)
+@Mixin(value = ToolType.class)
 public class ToolTypeMixin {
 
-    @Inject(method = "getTools(Z)Ljava/util/List;", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getTools(Z)Ljava/util/List;", at = @At("RETURN"), cancellable = true, remap = false)
     private static void appendPrintToolIfPrintable(boolean creative, CallbackInfoReturnable<List<ToolType>> cir) {
         List<ToolType> originalTools = cir.getReturnValue();
         List<ToolType> mutableTools = new ArrayList<>(originalTools);
