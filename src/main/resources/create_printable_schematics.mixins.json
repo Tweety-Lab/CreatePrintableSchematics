@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.tweety.create_printable_schematics.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "create_printable_schematics.refmap.json",
+  "mixins": [
+    "SchematicPlacePacketMixin",
+    "ToolTypeMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
